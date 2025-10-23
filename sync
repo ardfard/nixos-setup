@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+rsync -avz --progress --exclude='.git' -e "ssh -p 2222" ./ ardfard@localhost:~/nixos-setup/
