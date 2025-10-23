@@ -78,6 +78,7 @@
     group = "ardfard";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      git
     ];
   };
 
