@@ -6,7 +6,7 @@
   };
   
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfiguration.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       modules = [
         ./configuration.nix
       ];
