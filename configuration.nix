@@ -36,18 +36,20 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # setting up hyprland
-  programs.hyprland = {
-      enable = true;
+  programs = {
+    hyprland.enable = true;
+    dconf.enable = true;
+  };
+
+  services.seatd.enable = true;
+  services.dbus = {
+    enable = true;
+    packages = with pkgs; [ dconf ];
   };
 
   # Automatically start Hyprland session when logging in via Greetd
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.pam.services.greetd.enableKDEWallet = true;
-
-  services.desktopManager.session = {
-    enable = true;
-    sessionPackages = [ pkgs.hyprland ];
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -111,7 +113,6 @@
     };
   };
 
-  seatd.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
