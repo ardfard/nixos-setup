@@ -15,10 +15,9 @@ qemu-system-x86_64 \
   -device qemu-xhci,id=usb \
   -device virtio-net-pci,netdev=net0 \
   -device usb-tablet \
-  -device intel-hda \
-  -device hda-duplex \
   -fsdev local,security_model=passthrough,id=fsdev0,path=/home/ardfard/qemu-share \
   -device virtio-9p-pci,id=fs0,fsdev=fsdev0,mount_tag=host_share \
   -device virtio-serial-pci \
   -chardev socket,id=charchannel0,path=/tmp/qga.sock,server=on,wait=off \
-  -device virtserialport,chardev=charchannel0,name=org.qemu.guest_agent.0 
+  -device virtserialport,chardev=charchannel0,name=org.qemu.guest_agent.0 \
+  -boot menu=on
