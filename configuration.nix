@@ -95,10 +95,6 @@
   # services.displayManager.autoLogin.user = "ardfard";
   services.greetd = { 
     enable = true;
-    autoLogin = {
-      enable = true;
-      user = "ardfard";
-    };
     settings = rec {
       tuigreet_session = 
         let
