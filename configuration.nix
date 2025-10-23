@@ -40,16 +40,6 @@
       enable = true;
   };
 
-  services.displayManager.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
-        user = "ardfard";
-      };
-    };
-  };
-
   # Automatically start Hyprland session when logging in via Greetd
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.pam.services.greetd.enableKDEWallet = true;
@@ -101,10 +91,27 @@
   # Enable automatic login for the user.
   # services.displayManager.autoLogin.enable = true;
   # services.displayManager.autoLogin.user = "ardfard";
-  services.greetd.autoLogin = {
+  services.greetd = { 
     enable = true;
-    user = "ardfard";
+    autoLogin = {
+      enable = true;
+      user = "ardfard";
+    };
+    settings = rec {
+      tuigreet_session = 
+        let
+          session = "${pkgs.hyprland}/bin/Hyprland";
+          tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+        in
+        {
+          command = "${tuigreet} --time --remember --cmd ${session}";
+          user = "ardfard";
+        };
+      default_session = tuigreet_session;
+    };
   };
+
+  seatd.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
