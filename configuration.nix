@@ -35,18 +35,28 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  # setting up hyprland
+  programs.hyprland = {
+      enable = true;
+  };
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+        user = "ardfard";
+      };
+    };
+  };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  # Automatically start Hyprland session when logging in via Greetd
+  security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableKDEWallet = true;
+
+  services.desktopManager.session = {
+    enable = true;
+    sessionPackages = [ pkgs.hyprland ];
   };
 
   # Enable CUPS to print documents.
@@ -89,8 +99,12 @@
   security.sudo.wheelNeedsPassword = false;
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "ardfard";
+  # services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "ardfard";
+  services.greetd.autoLogin = {
+    enable = true;
+    user = "ardfard";
+  };
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -105,6 +119,15 @@
      wget
      curl
      lsof
+
+     wayland
+     wayland-utils
+     hyprland
+     foot
+     wofi
+
+     thunar
+     networkmanagerapplet
   ];
 
   fileSystems."/mnt/share" = {
@@ -127,7 +150,7 @@
   services.openssh.enable = true;
 
   services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "startplasma-wayland";
+  services.xrdp.defaultWindowManager = "${pkgs.hyprland}/bin/Hyprland";
   services.xrdp.openFirewall = true;
 
 
