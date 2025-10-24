@@ -49,7 +49,6 @@
 
   # Automatically start Hyprland session when logging in via Greetd
   security.pam.services.greetd.enableGnomeKeyring = true;
-  security.pam.services.greetd.enableKDEWallet = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
