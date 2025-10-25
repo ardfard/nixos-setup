@@ -120,14 +120,6 @@
      wget
      curl
      lsof
-
-     wayland
-     wayland-utils
-     hyprland
-     foot
-     wofi
-
-     networkmanagerapplet
   ];
 
   fileSystems."/mnt/share" = {

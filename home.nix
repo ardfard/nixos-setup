@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./hyprland.nix
+  ];
   # Home Manager needs a bit of information about the path and
   # to manage your home directory. This is done by setting
   # `home.username` and `home.homeDirectory`.
@@ -34,12 +37,36 @@
     # Wayland and Hyprland related
     wayland
     wayland-utils
+    hyprland
     foot
     wofi
+    
+    # Hyprland ecosystem
+    waybar
+    swaylock
+    grimblast
+    cliphist
+    hypridle
+    brightnessctl
+    wl-clipboard
+    
+    # File manager
+    thunar
     
     # Network
     networkmanagerapplet
   ];
+
+  # Environment variables
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    GDK_BACKEND = "wayland";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -69,4 +96,5 @@
       background_opacity = "0.9";
     };
   };
+
 }
