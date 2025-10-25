@@ -8,8 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Home Manager
-      <home-manager/nixos>
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
@@ -85,13 +83,6 @@
 
   users.groups.ardfard = {
     gid = 1000;
-  };
-
-  # Home Manager configuration
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.ardfard = import ./home.nix;
   };
 
   security.sudo.wheelNeedsPassword = false;

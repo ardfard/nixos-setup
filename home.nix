@@ -56,7 +56,7 @@
   programs.git = {
     enable = true;
     userName = "Ardin Fardiansyah";
-    userEmail = "your-email@example.com"; # Replace with your actual email
+    userEmail = "ardfard@ngublag.com"; # Replace with your actual email
   };
 
   # Kitty terminal configuration
