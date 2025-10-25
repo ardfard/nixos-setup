@@ -130,7 +130,6 @@
      foot
      wofi
 
-     thunar
      networkmanagerapplet
   ];
 
