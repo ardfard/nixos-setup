@@ -51,7 +51,7 @@
     wl-clipboard
     
     # File manager
-    thunar
+    xfce.thunar
     
     # Network
     networkmanagerapplet

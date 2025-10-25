@@ -104,7 +104,7 @@
         "SUPER, Q, exec, kitty"
         "SUPER, C, killactive,"
         "SUPER, M, exit,"
-        "SUPER, E, exec, thunar"
+        "SUPER, E, exec, ${pkgs.xfce.thunar}/bin/thunar"
         "SUPER, V, togglefloating,"
         "SUPER, R, exec, wofi --show drun"
         "SUPER, K, exec, wofi --show keys"
