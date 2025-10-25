@@ -41,6 +41,11 @@
     dconf.enable = true;
   };
 
+  # Environment variables for Wayland support
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1"; # Hint Electron apps to use Wayland
+  };
+
   services.seatd.enable = true;
   services.dbus = {
     enable = true;
