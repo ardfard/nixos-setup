@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Home Manager
+      <home-manager/nixos>
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
@@ -78,14 +80,18 @@
     description = "Ardin Fardiansyah";
     group = "ardfard";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      git
-      kitty
-    ];
+    # Packages are now managed by Home Manager in home.nix
   };
 
   users.groups.ardfard = {
     gid = 1000;
+  };
+
+  # Home Manager configuration
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.ardfard = import ./home.nix;
   };
 
   security.sudo.wheelNeedsPassword = false;
