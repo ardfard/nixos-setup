@@ -57,7 +57,9 @@
     networkmanagerapplet
     
     # Fonts for Waybar icons
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" "DroidSansMono" ]; })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
     font-awesome
     material-design-icons
   ];
