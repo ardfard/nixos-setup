@@ -55,6 +55,11 @@
     
     # Network
     networkmanagerapplet
+    
+    # Fonts for Waybar icons
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" "DroidSansMono" ]; })
+    font-awesome
+    material-design-icons
   ];
 
   # Environment variables
@@ -67,6 +72,9 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
   };
+
+  # Font configuration
+  fonts.fontconfig.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
