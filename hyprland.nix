@@ -44,7 +44,7 @@
           size = 3;
           passes = 1;
         };
-        drop_shadow = "yes";
+        drop_shadow = true;
         shadow_range = 4;
         shadow_render_power = 3;
         "col.shadow" = "rgba(1a1a1aee)";
@@ -106,7 +106,7 @@
         "SUPER, M, exit,"
         "SUPER, E, exec, ${pkgs.xfce.thunar}/bin/thunar"
         "SUPER, V, togglefloating,"
-        "SUPER, R, exec, wofi --show drun"
+        "SUPER, D, exec, wofi --show drun"
         "SUPER, K, exec, wofi --show keys"
         "SUPER, P, pseudo,"
         "SUPER, J, togglesplit,"
@@ -152,7 +152,7 @@
         "SUPER SHIFT, S, movetoworkspace, special:magic"
         
         # Resize windows
-        "SUPER, R, submap, resize"
+        "SUPER, T, submap, resize"
         "SUPER, escape, submap, reset"
         
         # Screenshots
@@ -173,7 +173,7 @@
         "SUPER, L, exec, swaylock"
         
         # Fullscreen
-        "SUPER, F, fullscreen,"
+        "SUPER, F, fullscreen, 0"
         
         # Toggle all floating
         "SUPER, SHIFT, F, exec, hyprctl dispatch workspaceopt allfloat"
