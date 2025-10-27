@@ -22,8 +22,10 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.extraSpecialArgs = { inherit nixvim; };
           home-manager.users.ardfard = import ./home.nix;
+          home-manager.sharedModules = [
+            nixvim.homeManagerModules.nixvim
+          ];
         }
       ];
     };

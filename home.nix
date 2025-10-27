@@ -1,9 +1,8 @@
-{ config, pkgs, nixvim, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ./hyprland.nix
-    nixvim.homeManagerModules.nixvim
   ];
   # Home Manager needs a bit of information about the path and
   # to manage your home directory. This is done by setting
