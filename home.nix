@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixvim, ... }:
 
 {
   imports = [
     ./hyprland.nix
+    nixvim.homeManagerModules.nixvim
   ];
   # Home Manager needs a bit of information about the path and
   # to manage your home directory. This is done by setting
@@ -26,7 +27,6 @@
   home.packages = with pkgs; [
     # Development tools
     git
-    vim
     curl
     wget
     
@@ -110,15 +110,13 @@
   # NixVim configuration
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
     
-    config = {
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      
-      # Basic settings
-      globals.mapleader = " ";
-      options = {
+    # Basic settings
+    globals.mapleader = " ";
+    opts = {
       number = true;
       relativenumber = true;
       shiftwidth = 2;
@@ -251,7 +249,6 @@
           toggle = "<leader>u";
         };
       };
-    };
     };
   };
 
