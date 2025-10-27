@@ -44,10 +44,6 @@
           size = 3;
           passes = 1;
         };
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
       };
       
       # Animations
@@ -173,7 +169,7 @@
         "SUPER, L, exec, swaylock"
         
         # Fullscreen
-        "SUPER, F, fullscreen, 0"
+        "SUPER, F, fullscreen, 1"
         
         # Toggle all floating
         "SUPER, SHIFT, F, exec, hyprctl dispatch workspaceopt allfloat"
