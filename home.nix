@@ -210,7 +210,14 @@
       # Treesitter
       treesitter = {
         enable = true;
-        indent = true;
+        settings = {
+          indent = {
+            enable = true;
+          };
+          highlight = {
+            enable = true;
+          };
+        };
         folding = true;
         nixvimInjections = true;
       };
@@ -243,17 +250,26 @@
       # Which-key
       which-key = {
         enable = true;
-        registrations = {
-          "<leader>f" = "Find";
-          "<leader>g" = "Git";
+        settings = {
+          spec = [
+            {
+              __unkeyed-1 = "<leader>f";
+              group = "Find";
+            }
+            {
+              __unkeyed-1 = "<leader>g";
+              group = "Git";
+            }
+          ];
         };
       };
 
       # Undotree
       undotree = {
         enable = true;
-        keymaps = {
-          toggle = "<leader>u";
+        settings = {
+          WindowLayout = 2;
+          ShortIndicators = true;
         };
       };
     };
