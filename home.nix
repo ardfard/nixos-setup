@@ -134,6 +134,15 @@
       updatetime = 50;
     };
 
+    # Colorscheme
+    colorschemes.catppuccin = {
+      enable = true;
+      settings = {
+        flavour = "mocha";
+        transparent_background = true;
+      };
+    };
+
     # Keymaps
     keymaps = [
       {
@@ -164,12 +173,6 @@
 
     # Plugins
     plugins = {
-      # Theme
-      catppuccin = {
-        enable = true;
-        flavour = "mocha";
-        transparentBackground = true;
-      };
 
       # LSP
       lsp = {
