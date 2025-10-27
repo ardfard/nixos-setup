@@ -52,8 +52,6 @@
     packages = with pkgs; [ dconf ];
   };
 
-  # Automatically start Hyprland session when logging in via Greetd
-  security.pam.services.greetd.enableGnomeKeyring = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -92,23 +90,10 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  # Enable automatic login for the user.
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "ardfard";
-  services.greetd = { 
+  # Enable SDDM display manager
+  services.displayManager.sddm = {
     enable = true;
-    settings = rec {
-      tuigreet_session = 
-        let
-          session = "${pkgs.hyprland}/bin/Hyprland";
-          tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-        in
-        {
-          command = "${tuigreet} --time --remember --cmd ${session}";
-          user = "ardfard";
-        };
-      default_session = tuigreet_session;
-    };
+    wayland.enable = true;
   };
 
 
