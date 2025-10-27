@@ -111,11 +111,11 @@
   # NixVim configuration
   programs.nixvim = {
     enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
     
     config = {
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
       # Basic settings
       globals.mapleader = " ";
       options = {
