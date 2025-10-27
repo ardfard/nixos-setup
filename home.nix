@@ -178,7 +178,7 @@
       lsp = {
         enable = true;
         servers = {
-          lua-ls.enable = true;
+          lua_ls.enable = true;
           nixd.enable = true;
         };
       };
@@ -231,6 +231,11 @@
           "<leader>fb" = "buffers";
           "<leader>fh" = "help_tags";
         };
+      };
+
+      # Web devicons (required by telescope)
+      web-devicons = {
+        enable = true;
       };
 
       # Git
