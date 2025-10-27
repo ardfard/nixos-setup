@@ -110,13 +110,15 @@
   # NixVim configuration
   programs.nixvim = {
     enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
     
-    # Basic settings
-    globals.mapleader = " ";
-    options = {
+    config = {
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      
+      # Basic settings
+      globals.mapleader = " ";
+      options = {
       number = true;
       relativenumber = true;
       shiftwidth = 2;
@@ -249,6 +251,7 @@
           toggle = "<leader>u";
         };
       };
+    };
     };
   };
 
