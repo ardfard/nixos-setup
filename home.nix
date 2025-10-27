@@ -115,139 +115,141 @@
     viAlias = true;
     vimAlias = true;
     
-    # Basic settings
-    globals.mapleader = " ";
-    options = {
-      number = true;
-      relativenumber = true;
-      shiftwidth = 2;
-      tabstop = 2;
-      expandtab = true;
-      smartindent = true;
-      wrap = false;
-      swapfile = false;
-      backup = false;
-      undofile = true;
-      hlsearch = false;
-      incsearch = true;
-      termguicolors = true;
-      scrolloff = 8;
-      updatetime = 50;
-    };
-
-    # Keymaps
-    keymaps = [
-      {
-        mode = "n";
-        key = "<leader>pv";
-        action = "<cmd>Ex<cr>";
-        options = { desc = "Open file explorer"; };
-      }
-      {
-        mode = "n";
-        key = "<leader>u";
-        action = "<cmd>UndotreeToggle<cr>";
-        options = { desc = "Toggle undo tree"; };
-      }
-      {
-        mode = "n";
-        key = "<leader>y";
-        action = "\"+y";
-        options = { desc = "Copy to system clipboard"; };
-      }
-      {
-        mode = "v";
-        key = "<leader>y";
-        action = "\"+y";
-        options = { desc = "Copy to system clipboard"; };
-      }
-    ];
-
-    # Plugins
-    plugins = {
-      # Theme
-      catppuccin = {
-        enable = true;
-        flavour = "mocha";
-        transparentBackground = true;
+    config = {
+      # Basic settings
+      globals.mapleader = " ";
+      options = {
+        number = true;
+        relativenumber = true;
+        shiftwidth = 2;
+        tabstop = 2;
+        expandtab = true;
+        smartindent = true;
+        wrap = false;
+        swapfile = false;
+        backup = false;
+        undofile = true;
+        hlsearch = false;
+        incsearch = true;
+        termguicolors = true;
+        scrolloff = 8;
+        updatetime = 50;
       };
 
-      # LSP
-      lsp = {
-        enable = true;
-        servers = {
-          lua-ls.enable = true;
-          nixd.enable = true;
+      # Keymaps
+      keymaps = [
+        {
+          mode = "n";
+          key = "<leader>pv";
+          action = "<cmd>Ex<cr>";
+          options = { desc = "Open file explorer"; };
+        }
+        {
+          mode = "n";
+          key = "<leader>u";
+          action = "<cmd>UndotreeToggle<cr>";
+          options = { desc = "Toggle undo tree"; };
+        }
+        {
+          mode = "n";
+          key = "<leader>y";
+          action = "\"+y";
+          options = { desc = "Copy to system clipboard"; };
+        }
+        {
+          mode = "v";
+          key = "<leader>y";
+          action = "\"+y";
+          options = { desc = "Copy to system clipboard"; };
+        }
+      ];
+
+      # Plugins
+      plugins = {
+        # Theme
+        catppuccin = {
+          enable = true;
+          flavour = "mocha";
+          transparentBackground = true;
         };
-      };
 
-      # Completion
-      nvim-cmp = {
-        enable = true;
-        autoEnableSources = true;
-        sources = [
-          { name = "nvim_lsp"; }
-          { name = "path"; }
-          { name = "buffer"; }
-        ];
-        mapping = {
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-e>" = "cmp.mapping.close()";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-n>" = "cmp.mapping.select_next_item()";
-          "<C-p>" = "cmp.mapping.select_prev_item()";
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })";
-          "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })";
+        # LSP
+        lsp = {
+          enable = true;
+          servers = {
+            lua-ls.enable = true;
+            nixd.enable = true;
+          };
         };
-      };
 
-      # Treesitter
-      treesitter = {
-        enable = true;
-        indent = true;
-        folding = true;
-        nixvimInjections = true;
-      };
-
-      # Telescope
-      telescope = {
-        enable = true;
-        keymaps = {
-          "<leader>ff" = "find_files";
-          "<leader>fg" = "live_grep";
-          "<leader>fb" = "buffers";
-          "<leader>fh" = "help_tags";
+        # Completion
+        nvim-cmp = {
+          enable = true;
+          autoEnableSources = true;
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+          mapping = {
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-e>" = "cmp.mapping.close()";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-n>" = "cmp.mapping.select_next_item()";
+            "<C-p>" = "cmp.mapping.select_prev_item()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })";
+            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })";
+          };
         };
-      };
 
-      # Git
-      gitsigns = {
-        enable = true;
-        signs = {
-          add = { text = "+"; };
-          change = { text = "~"; };
-          delete = { text = "_"; };
-          topdelete = { text = "‾"; };
-          changedelete = { text = "~"; };
+        # Treesitter
+        treesitter = {
+          enable = true;
+          indent = true;
+          folding = true;
+          nixvimInjections = true;
         };
-      };
 
-      # Which-key
-      which-key = {
-        enable = true;
-        registrations = {
-          "<leader>f" = "Find";
-          "<leader>g" = "Git";
+        # Telescope
+        telescope = {
+          enable = true;
+          keymaps = {
+            "<leader>ff" = "find_files";
+            "<leader>fg" = "live_grep";
+            "<leader>fb" = "buffers";
+            "<leader>fh" = "help_tags";
+          };
         };
-      };
 
-      # Undotree
-      undotree = {
-        enable = true;
-        keymaps = {
-          toggle = "<leader>u";
+        # Git
+        gitsigns = {
+          enable = true;
+          signs = {
+            add = { text = "+"; };
+            change = { text = "~"; };
+            delete = { text = "_"; };
+            topdelete = { text = "‾"; };
+            changedelete = { text = "~"; };
+          };
+        };
+
+        # Which-key
+        which-key = {
+          enable = true;
+          registrations = {
+            "<leader>f" = "Find";
+            "<leader>g" = "Git";
+          };
+        };
+
+        # Undotree
+        undotree = {
+          enable = true;
+          keymaps = {
+            toggle = "<leader>u";
+          };
         };
       };
     };
