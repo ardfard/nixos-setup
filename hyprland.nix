@@ -14,7 +14,7 @@
         kb_layout = "us";
         kb_variant = "";
         kb_model = "";
-        kb_options = "";
+        kb_options = "ctrl:swapcaps";
         kb_rules = "";
         
         follow_mouse = 1;
@@ -26,8 +26,8 @@
       
       # General settings
       general = {
-        gaps_in = 5;
-        gaps_out = 20;
+        gaps_in = 1;
+        gaps_out = 0;
         border_size = 2;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
