@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixvim, ... }:
 
 {
   imports = [
     ./hyprland.nix
+    nixvim.homeManagerModules.nixvim
   ];
   # Home Manager needs a bit of information about the path and
   # to manage your home directory. This is done by setting
@@ -104,6 +105,151 @@
       font_family = "JetBrains Mono";
       font_size = 12;
       background_opacity = "0.9";
+    };
+  };
+
+  # NixVim configuration
+  programs.nixvim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    
+    # Basic settings
+    globals.mapleader = " ";
+    options = {
+      number = true;
+      relativenumber = true;
+      shiftwidth = 2;
+      tabstop = 2;
+      expandtab = true;
+      smartindent = true;
+      wrap = false;
+      swapfile = false;
+      backup = false;
+      undofile = true;
+      hlsearch = false;
+      incsearch = true;
+      termguicolors = true;
+      scrolloff = 8;
+      updatetime = 50;
+    };
+
+    # Keymaps
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>pv";
+        action = "<cmd>Ex<cr>";
+        options = { desc = "Open file explorer"; };
+      }
+      {
+        mode = "n";
+        key = "<leader>u";
+        action = "<cmd>UndotreeToggle<cr>";
+        options = { desc = "Toggle undo tree"; };
+      }
+      {
+        mode = "n";
+        key = "<leader>y";
+        action = "\"+y";
+        options = { desc = "Copy to system clipboard"; };
+      }
+      {
+        mode = "v";
+        key = "<leader>y";
+        action = "\"+y";
+        options = { desc = "Copy to system clipboard"; };
+      }
+    ];
+
+    # Plugins
+    plugins = {
+      # Theme
+      catppuccin = {
+        enable = true;
+        flavour = "mocha";
+        transparentBackground = true;
+      };
+
+      # LSP
+      lsp = {
+        enable = true;
+        servers = {
+          lua-ls.enable = true;
+          nixd.enable = true;
+        };
+      };
+
+      # Completion
+      nvim-cmp = {
+        enable = true;
+        autoEnableSources = true;
+        sources = [
+          { name = "nvim_lsp"; }
+          { name = "path"; }
+          { name = "buffer"; }
+        ];
+        mapping = {
+          "<C-Space>" = "cmp.mapping.complete()";
+          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+          "<C-e>" = "cmp.mapping.close()";
+          "<C-f>" = "cmp.mapping.scroll_docs(4)";
+          "<C-n>" = "cmp.mapping.select_next_item()";
+          "<C-p>" = "cmp.mapping.select_prev_item()";
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })";
+          "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })";
+        };
+      };
+
+      # Treesitter
+      treesitter = {
+        enable = true;
+        indent = true;
+        folding = true;
+        nixvimInjections = true;
+      };
+
+      # Telescope
+      telescope = {
+        enable = true;
+        keymaps = {
+          "<leader>ff" = "find_files";
+          "<leader>fg" = "live_grep";
+          "<leader>fb" = "buffers";
+          "<leader>fh" = "help_tags";
+        };
+      };
+
+      # Git
+      gitsigns = {
+        enable = true;
+        signs = {
+          add = { text = "+"; };
+          change = { text = "~"; };
+          delete = { text = "_"; };
+          topdelete = { text = "‾"; };
+          changedelete = { text = "~"; };
+        };
+      };
+
+      # Which-key
+      which-key = {
+        enable = true;
+        registrations = {
+          "<leader>f" = "Find";
+          "<leader>g" = "Git";
+        };
+      };
+
+      # Undotree
+      undotree = {
+        enable = true;
+        keymaps = {
+          toggle = "<leader>u";
+        };
+      };
     };
   };
 
